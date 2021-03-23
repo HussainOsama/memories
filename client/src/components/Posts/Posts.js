@@ -12,10 +12,20 @@ function Posts({ setCurrentId }) {
   return !posts.length ? (
     <CircularProgress />
   ) : (
-    <Grid container className={classes.mainContainer}>
+    <Grid
+      container
+      className={classes.container}
+      container
+      alignItems="stretch"
+      spacing={3}
+    >
       {posts.map((post) => (
         <Grid item key={post._id} xs={12} sm={6}>
-          <Post post={post} setCurrentId={setCurrentId} />
+          <Post
+            post={post}
+            setCurrentId={setCurrentId}
+            className={classes.smMargin}
+          />
         </Grid>
       ))}
     </Grid>

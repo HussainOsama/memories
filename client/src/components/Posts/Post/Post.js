@@ -12,14 +12,11 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../../actions/posts";
+import { deletePost, likePost } from "../../../actions/posts";
 
 function Post({ post, setCurrentId }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-
-  const likePost = () => {};
-  // const deletePost = () => {};
 
   // const [CurrentId, setCurrentId] = useState(0);
 

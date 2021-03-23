@@ -9,8 +9,13 @@ export default function reducer(posts = [], action) {
         post._id === action.payload._id ? action.payload : post
       );
     case "DELETE": {
-      console.log("Here is Delete");
       return posts.filter((post) => post._id !== action.payload);
+    }
+    case "LIKE": {
+      console.log(action.payload);
+      return posts.map((post) =>
+        post._id === action.payload._id ? action.payload : post
+      );
     }
 
     default:

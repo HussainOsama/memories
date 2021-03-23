@@ -43,9 +43,6 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost(postData));
       clear();
     } else {
-      // console.log(currentId);
-      // console.log(postData);
-
       dispatch(updatePost(currentId, postData));
       clear();
     }

@@ -47,37 +47,17 @@ const updatePost = async (req, res) => {
   res.json(updatedPost);
 };
 
-export { getPosts, createPost, deletePost, updatePost };
+const likePost = async (req, res) => {
+  const { id } = req.params;
+  const post = await postMessage.find({ _id: id });
+  let newlikeCount = post[0].likeCount;
+  newlikeCount++;
+  const newPost = await postMessage.findByIdAndUpdate(
+    id,
+    { likeCount: newlikeCount },
+    { new: true }
+  );
+  res.json(newPost);
+};
 
-// const updatePost = async (req, res) => {
-//   const { id } = req.params;
-//   // const { title, message, creator, selectedFile, tags } = req.body;
-//   const post = req.body;
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).send(`No post with id: ${id}`);
-//   }
-
-//   try {
-//     console.log("Hello Update try");
-//     // const updatedPost = {
-//     //   creator,
-//     //   title,
-//     //   message,
-//     //   tags,
-//     //   selectedFile,
-//     //   _id: id,
-//     // };
-//     // console.log(updatedPost.creator);
-//     const updated = await postMessage.findByIdAndUpdate(
-//       id,
-//       { ...post, _id },
-//       {
-//         new: true,
-//       }
-//     );
-//     console.log(updated);
-//     res.json(updated);
-//   } catch (err) {
-//     res.send(err);
-//   }
-// };
+export { getPosts, createPost, deletePost, updatePost, likePost };
